@@ -31,6 +31,6 @@ public class Post extends ParseObject {
         put(KEY_IMAGE, image);
     }
     public void setUser(ParseUser user){
-        put(KEY_DESCRIPTION, user);
+        put(KEY_USER, user);
     }
 }
