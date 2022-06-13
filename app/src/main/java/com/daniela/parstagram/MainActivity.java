@@ -167,8 +167,19 @@ public class MainActivity extends AppCompatActivity {
                 onLogoutButton();
                 return true;
             }
+            case R.id.create:{
+                Log.d(TAG,"add menu create");
+                onCreateButton();
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void onCreateButton() {
+        Intent i = new Intent(this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
+        startActivity(i);
     }
 
     private void onLogoutButton() {
