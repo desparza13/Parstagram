@@ -44,6 +44,7 @@ public class FeedActivity extends AppCompatActivity {
                 swipeContainer.setRefreshing(false);
             }
         });
+
         // Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
