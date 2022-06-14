@@ -42,7 +42,9 @@ public class FeedActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
+                adapter.clear();
                 queryPosts();
+                swipeContainer.setRefreshing(false);
             }
         });
         // Configure the refreshing colors
@@ -128,7 +130,6 @@ public class FeedActivity extends AppCompatActivity {
                 // save received posts to list and notify adapter of new data
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
-                swipeContainer.setRefreshing(false);
             }
         });
 }}
