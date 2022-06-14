@@ -5,12 +5,17 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
+
+@Parcel (analyze = Post.class)
 @ParseClassName("Post")
 public class Post extends ParseObject {
     //Define keys
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
+
+    public Post(){}
 
     //Getters
     public String getDescription(){

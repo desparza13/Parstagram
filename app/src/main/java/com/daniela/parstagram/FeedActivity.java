@@ -39,6 +39,9 @@ public class FeedActivity extends AppCompatActivity {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
                 adapter.clear();
                 queryPosts();
                 swipeContainer.setRefreshing(false);
@@ -59,6 +62,7 @@ public class FeedActivity extends AppCompatActivity {
         // query posts from Parstagram
         queryPosts();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
