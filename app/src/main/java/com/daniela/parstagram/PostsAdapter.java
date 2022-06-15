@@ -19,6 +19,7 @@ import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
@@ -58,6 +59,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUsername;
         private TextView tvDescription;
         private TextView tvProfileNameDescription;
+        private TextView tvTimestamp;
         private ImageView ivProfilePic;
         private ImageView ivImage;
 
@@ -68,6 +70,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvProfileNameDescription = itemView.findViewById(R.id.tvProfileNameDescription);
+            tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             itemView.setOnClickListener(this);
         }
 
@@ -87,6 +90,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
             tvProfileNameDescription.setText(post.getUser().getUsername());
+            Date createdAt = post.getCreatedAt();
+            tvTimestamp.setText(Post.calculateTimeAgo(createdAt));
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);

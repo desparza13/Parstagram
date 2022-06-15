@@ -59,4 +59,13 @@
         android:layout_toEndOf="@+id/tvProfileNameDescription"
         android:textSize="20sp"
         tools:text="trying to look hipster" />
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProfileNameDescription"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        tools:text="an hour ago" />
 </RelativeLayout>
