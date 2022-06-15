@@ -150,6 +150,10 @@ public class MainActivity extends AppCompatActivity {
                 ivPostImage.setImageResource(0);
             }
         });
+        Intent i = new Intent(this, FeedActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
+        startActivity(i);
     }
 
     //Menu (Used to create logout button)
