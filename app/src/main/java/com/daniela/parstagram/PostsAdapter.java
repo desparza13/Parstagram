@@ -56,9 +56,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView tvUsername;
-        private ImageView ivImage;
         private TextView tvDescription;
+        private TextView tvProfileNameDescription;
         private ImageView ivProfilePic;
+        private ImageView ivImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +67,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivImage = itemView.findViewById(R.id.ivImage);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvProfileNameDescription = itemView.findViewById(R.id.tvProfileNameDescription);
             itemView.setOnClickListener(this);
         }
 
@@ -84,6 +86,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             // Bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
+            tvProfileNameDescription.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);

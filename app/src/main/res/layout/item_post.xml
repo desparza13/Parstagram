@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivProfilePic"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -26,6 +26,8 @@
         android:layout_toEndOf="@+id/ivProfilePic"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="25sp"
+        android:textStyle="bold"
         tools:text="rahul" />
 
     <ImageView
@@ -39,10 +41,22 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="match_parent"
+        android:id="@+id/tvProfileNameDescription"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivImage"
         android:layout_alignParentStart="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="dany" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/tvProfileNameDescription"
+        android:textSize="20sp"
         tools:text="trying to look hipster" />
 </RelativeLayout>
