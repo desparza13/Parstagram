@@ -26,6 +26,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+ext{
+    appCompatVersion = "1.0.0"
+    designSupportVersion = "1.0.0"
+}
 
 dependencies {
     implementation 'org.parceler:parceler-api:1.1.12'
@@ -43,4 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     //Parse
     implementation "com.github.parse-community.Parse-SDK-Android:parse:1.18.5"
+    //Bottom navigation
+    implementation "androidx.appcompat:appcompat:${appCompatVersion}"
+    implementation "com.google.android.material:material:${designSupportVersion}"
 }
