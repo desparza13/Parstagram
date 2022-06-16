@@ -14,6 +14,7 @@ public class ProfileFragment extends PostsFragment {
     @Override
     protected void queryPosts() {
         super.queryPosts();
+        adapter.clear();
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
@@ -21,7 +22,7 @@ public class ProfileFragment extends PostsFragment {
         //limit query to only posts made by the user
         query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
         // limit query to latest 20 items
-        query.setLimit(20);
+        //query.setLimit(20);
         // order posts by creation date (newest first)
         query.addDescendingOrder("createdAt");
         // start an asynchronous call for posts
