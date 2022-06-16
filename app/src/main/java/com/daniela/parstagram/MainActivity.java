@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.daniela.parstagram.fragments.ComposeFragment;
 import com.daniela.parstagram.fragments.PostsFragment;
+import com.daniela.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -65,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                         Toast.makeText(MainActivity.this, "profile", Toast.LENGTH_SHORT).show();
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                     default:
-                        fragment = new ComposeFragment();
+                        fragment = new PostsFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();

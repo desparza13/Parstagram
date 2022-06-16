@@ -77,7 +77,7 @@ public class PostsFragment extends Fragment {
         // query posts from Parstagram
         queryPosts();
     }
-    private void queryPosts() {
+    protected void queryPosts() {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
