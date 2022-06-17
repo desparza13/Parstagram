@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
@@ -23,17 +23,9 @@
         android:hint="password"
         android:inputType="textPassword"></EditText>
     <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Login"></Button>
-    <Button
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Sign Up"></Button>
-
-
 </LinearLayout>
