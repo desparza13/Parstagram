@@ -63,7 +63,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvTimestamp;
         private ImageView ivProfilePic;
         private ImageView ivImage;
-        private ImageButton btnLike;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,7 +73,6 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvProfileNameDescription = itemView.findViewById(R.id.tvProfileNameDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             itemView.setOnClickListener(this);
-            btnLike = itemView.findViewById(R.id.btnLike);
         }
 
 
