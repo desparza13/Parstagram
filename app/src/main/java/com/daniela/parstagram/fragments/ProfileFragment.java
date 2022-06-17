@@ -24,10 +24,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.daniela.parstagram.MainActivity;
 import com.daniela.parstagram.Post;
 import com.daniela.parstagram.PostsAdapter;
+import com.daniela.parstagram.ProfilepicActivity;
 import com.daniela.parstagram.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -47,7 +51,7 @@ public class ProfileFragment extends Fragment {
     public static final String TAG = "FeedActivity";
     private ImageView ivProfileImage;
     private Button  btnCaptureProfilePic;
-    private Button btnSubmit;
+    private TextView tvCurrentUser;
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
     private RecyclerView rvPosts;
@@ -70,35 +74,18 @@ public class ProfileFragment extends Fragment {
         //setContentView(R.layout.activity_feed);
         ivProfileImage = view.findViewById(R.id.ivProfileImage);
         btnCaptureProfilePic = view.findViewById(R.id.btnCaptureProfilePic);
-        btnSubmit = view.findViewById(R.id.btnSubmit);
+        tvCurrentUser = view.findViewById(R.id.tvCurrentUser);
+        tvCurrentUser.setText(ParseUser.getCurrentUser().getUsername());
+        ParseFile profile = ParseUser.getCurrentUser().getParseFile("profilepicture");
+        if (profile != null) {
+            Glide.with(this).load(profile.getUrl()).circleCrop().into(ivProfileImage);
+        }
         //Capture image button
         btnCaptureProfilePic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchCamera();
-            }
-        });
-        //Submit button
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (photoFile == null || ivProfileImage.getDrawable() == null) {
-                    Toast.makeText(getContext(), "There is no image", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                currentUser.put("profilepicture",new ParseFile(photoFile));
-                currentUser.saveInBackground(new SaveCallback() {
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            //success, saved!
-                            Log.d("Profile", "Successfully saved!");
-                        } else {
-                            //fail to save!
-                            e.printStackTrace();
-                        }
-                    }
-                });
+                Intent i = new Intent(getContext(), ProfilepicActivity.class);
+                startActivity(i);
             }
         });
         rvPosts = view.findViewById(R.id.rvPosts);
@@ -132,57 +119,6 @@ public class ProfileFragment extends Fragment {
         // query posts from Parstagram
         queryPosts();
     }
-    private void launchCamera() {
-        Log.i(TAG, "Launching camera");
-        // create Intent to take a picture and return control to the calling application
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Create a File reference for future access
-        photoFile = getPhotoFileUri(photoFileName);
-
-        // wrap File object into a content provider
-        // required for API >= 24
-        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(getContext(), "com.codepath.fileprovider", photoFile);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
-
-        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
-        // So as long as the result is not null, it's safe to use the intent.
-        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
-            // Start the image capture intent to take photo
-            startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-        }
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-                // by this point we have the camera photo on disk
-                Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-                // RESIZE BITMAP, see section below
-                // Load the taken image into a preview
-                ivProfileImage.setImageBitmap(takenImage);
-            } else { // Result was a failure
-                Toast.makeText(getContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    // Returns the File for a photo stored on disk given the fileName
-    public File getPhotoFileUri(String fileName) {
-        // Get safe storage directory for photos
-        // Use `getExternalFilesDir` on Context to access package-specific directories.
-        // This way, we don't need to request external read/write runtime permissions.
-        File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
-
-        // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
-            Log.d(TAG, "failed to create directory");
-        }
-
-        // Return the file target for the photo based on filename
-        return new File(mediaStorageDir.getPath() + File.separator + fileName);
-    }
     protected void queryPosts() {
         // specify what type of data we want to query - Post.class
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
@@ -213,5 +149,7 @@ public class ProfileFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-    }}
+    }
+}
+
 
