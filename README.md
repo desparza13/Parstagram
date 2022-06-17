@@ -17,9 +17,8 @@ The following **required** functionality is completed:
 - ![login](https://user-images.githubusercontent.com/56266109/174357231-8e1c6a94-16b8-4280-9eb0-a0ed8c177e03.gif)
 - [X] The current signed in user is persisted across app restarts
 - ![persistance](https://user-images.githubusercontent.com/56266109/174357372-c292839d-3543-47fd-a594-afaf8c829cfd.gif)
-- [X] User can log out of!
+- [X] User can log out of! their account
 - ![logout](https://user-images.githubusercontent.com/56266109/174357467-1bd65900-79e1-4b87-bf2f-1047365ba857.gif)
- their account
 - [X] User can take a photo, add a caption, and post it to "Instagram"
 - ![post](https://user-images.githubusercontent.com/56266109/174357652-487d38df-7e99-46a2-be69-5dee8584bdbd.gif)
 - [X] User can view the last 20 posts submitted to "Instagram"
