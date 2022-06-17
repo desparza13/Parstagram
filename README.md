@@ -11,13 +11,14 @@ The following **required** functionality is completed:
 - [X] User sees app icon in home screen.
 - ![icon](https://user-images.githubusercontent.com/56266109/174356956-44242eab-4fcd-49cd-9a58-27f56d908e40.gif)
 - [X] User can sign up to create a new account using Parse authentication
+- 
 -![signUp](https://user-images.githubusercontent.com/56266109/174357098-eccced6e-926b-4dfc-9544-86bcf012c176.gif)
 - [X] User can log in to their account
 - ![login](https://user-images.githubusercontent.com/56266109/174357231-8e1c6a94-16b8-4280-9eb0-a0ed8c177e03.gif)
 - [X] The current signed in user is persisted across app restarts
 - ![persistance](https://user-images.githubusercontent.com/56266109/174357372-c292839d-3543-47fd-a594-afaf8c829cfd.gif)
 - [X] User can log out of!
-- [logout](https://user-images.githubusercontent.com/56266109/174357467-1bd65900-79e1-4b87-bf2f-1047365ba857.gif)
+- ![logout](https://user-images.githubusercontent.com/56266109/174357467-1bd65900-79e1-4b87-bf2f-1047365ba857.gif)
  their account
 - [X] User can take a photo, add a caption, and post it to "Instagram"
 - ![post](https://user-images.githubusercontent.com/56266109/174357652-487d38df-7e99-46a2-be69-5dee8584bdbd.gif)
