@@ -18,7 +18,7 @@ public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
-    public static final String KEY_PROFILEPICTURE = "profilepicture";
+    public static final String KEY_LIKES = "likes";
 
     public Post(){}
 
@@ -32,6 +32,7 @@ public class Post extends ParseObject {
     public ParseUser getUser(){
         return getParseUser(KEY_USER);
     }
+    public Integer getLikes() { return  getInt(KEY_LIKES); }
 
     //Setters
     public void setDescription(String description){
@@ -43,20 +44,18 @@ public class Post extends ParseObject {
     public void setUser(ParseUser user){
         put(KEY_USER, user);
     }
+    public void setLikes(boolean liked) {put(KEY_LIKES, getLikes()+1);}
 
     //Get timestamp
     public static String calculateTimeAgo(Date createdAt) {
-
         int SECOND_MILLIS = 1000;
         int MINUTE_MILLIS = 60 * SECOND_MILLIS;
         int HOUR_MILLIS = 60 * MINUTE_MILLIS;
         int DAY_MILLIS = 24 * HOUR_MILLIS;
-
         try {
             createdAt.getTime();
             long time = createdAt.getTime();
             long now = System.currentTimeMillis();
-
             final long diff = now - time;
             if (diff < MINUTE_MILLIS) {
                 return "just now";
